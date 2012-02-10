@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h1>Bookmarks</h1>
+    {% for bookmark in bookmarks.object_list %}
+{% include "bookmarks/bookmark_list.html" %}
+{% endfor %}
+<div class="pagination">
+    <span class="step-links">
+        {% if bookmarks.has_previous %}
+            <a href="?page={{ bookmarks.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ bookmarks.number }} of {{ bookmarks..paginator.num_pages }}.
+        </span>
+
+        {% if bookmarks.has_next %}
+            <a href="?page={{ bookmarks.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

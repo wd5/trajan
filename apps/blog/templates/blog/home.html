@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block extra_head %}
+			
+<script>
+$(document).ready(function () {
+
+
+$.ajax({
+    url: "/beers/api/v1/beer/?format=jsonp&limit=2",
+    dataType: 'jsonp',
+    success: function(data){
+	$.each(data.objects, function(i,item){
+    $("<article><h4><a href='" + item.absolute_url + "'>" + item.name + "</a></h4>" + item.short_description + "</article>").appendTo("#brews")
+      
+  });		
+    }
+});
+
+
+
+$.ajax({
+   url: "/blog/api/v1/post/?format=jsonp&limit=2",
+   dataType: 'jsonp',
+   success: function(data){
+      $.each(data.objects, function(i,item){
+    $("<article><h4><a href='" + item.absolute_url + "'>" + item.title + "</a></h4>" + item.summary + "</article>").appendTo("#posts")
+      
+  });
+}
+});
+
+$.ajax({
+    url: "http://fotochest.com/api/v1/photo/?format=jsonp&limit=6",
+    dataType: 'jsonp',
+    success: function(data){
+	$.each(data.objects, function(i, item){
+	   $("<a href='http://fotochest.com" + item.absolute_url + "'><img src='" + item.thumb + "' style='background: #000; padding:5px; margin-right:12px; margin-top:7px; width:220px'/></a>").appendTo("#photos")
+	   
+	});
+	
+    }
+});
+
+  });
+
+  </script>
+{% endblock %}
+{% block extra_section %} class="home"{% endblock %}
+{% block main_content %}
+<header>
+			<hgroup>
+				<h1>Derek Stegelman</h1>
+				<h2>Husband, Homebrewer, and Djangonaut</h2>
+			</hgroup>
+		</header>
+		<section id="posts">
+			<h3>Recent Blog Posts</h3>
+                        
+		</section>
+		<section id="brews">
+		<h3>Homebrew on Tap</h3>
+                
+		</section>
+		
+		<section id="photos">
+		<h3>Recent Photos</h3>	
+			
+		</section>	
+                			
+		
+		<section id="projects">
+		<h3>Current Projects</h3>
+		<article>
+			<h4><a href="https://github.com/dstegelman/central-station" target="_blank">Central Station</a></h4>
+			<p>Central Station is a new web based, project management app.  It specifically is
+                         designed for teams that have no project manager and need to be agile in their
+                        workflow.  It supports Git as well as defect tracking and a forum.</p>
+		</article>
+		<article>
+			<h4><a href="https://github.com/dstegelman/nutsbolts-utils" target="_blank">NutsBolts Utils</a></h4>
+			<p>This is a utlitiy package I developed with some helpful snippets
+                        and libraries for django based applications.  You can find an API manager
+                        slug helpers, and other tools used in common Django app development.</p>
+		</article>
+		</section>
+		<section id="repos">
+			<h3>Other Projects on Github</h3>
+			<ul>
+			        {% for repo in repos %}
+				<li><a href="{{ repo.url }}">{{ repo.name }}</a></li>
+				{% endfor %}
+			</ul>				
+			
+		</section>
+		<section id="contact">
+		<h3>Spam Me</h3>
+		<article>
+		<p>Want to spam me?, go ahead.</p>
+		<dl>
+			<dt>Twitter:</dt>
+			<dd><a href="http://twitter.com/derekstegelman">derekstegelman</a></dd>
+			<dt>Facebook:</dt>
+			<dd><a href="http://facebook.com/dstegelman">dstegelman</a></dd>
+		</dl>
+		</article>
+		<form method="post" action=".">{% csrf_token %}
+                <label for="name">Name:</label>
+		{{ form.name }}
+                <label for="email">Email:</label>
+		{{ form.email }}
+                <label for="message">Message:</label>
+		{{ form.message }}
+		<input type="submit" value="Send Spam">
+		
+		</form>
+		</section>
+		
+		
+                {% endblock %}

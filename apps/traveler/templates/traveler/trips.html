@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    {% if trips.object_list %}
+    
+    {% for trip in trips.object_list %}
+        <article class="entry">
+	    <h1><a href="{{ trip.get_absolute_url }}">{{ trip.title }}</a></h1>
+	    <h2>Posted {{ trip.date_created }}</h2>
+            {% autoescape off %}
+	{{ trip.description }}
+        {% endautoescape %}
+        </article>
+        
+    {% endfor %}
+    {% endif %}
+    
+    
+
+<div class="pagination">
+    <span class="step-links">
+        {% if trips.has_previous %}
+            <a href="?page={{ trips.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ trips.number }} of {{ trips.paginator.num_pages }}.
+        </span>
+
+        {% if trips.has_next %}
+            <a href="?page={{ trips.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}
+

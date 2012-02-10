@@ -1,0 +1,10 @@
+<ul id="bookmark_list">
+    {% for tag in tags %}
+    <li class="bookmark">
+        <h4>
+            <a href="{% url bookmarks.views.tag tag_slug=tag.slug %}">{{  }}</a>
+        </h4>
+        
+    </li>
+    {% endfor %}
+</ul>
