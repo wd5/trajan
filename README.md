@@ -1,7 +1,7 @@
 Trajan
 ======
 
-was Roman Emperor from 98 to 117 AD. Born into a non-patrician family in the province of Hispania Baetica, 
+Trajan was Roman Emperor from 98 to 117 AD. Born into a non-patrician family in the province of Hispania Baetica, 
 in Spain[2] Trajan rose to prominence during the reign of emperor Domitian. Serving as a legatus legionis 
 in Hispania Tarraconensis, in Spain, in 89 Trajan supported the emperor against a revolt on the Rhine led 
 by Antonius Saturninus.[3] In September 96, Domitian was succeeded by Marcus Cocceius Nerva, an old and 
