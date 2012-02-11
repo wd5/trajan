@@ -10,6 +10,11 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
+   
+   quick_start
+   templates/quick_start
+   templates/tag_reference
+   plugins/developing
 
 
 
