@@ -17,7 +17,7 @@ env.activate = 'source ~/.virtualenvs/%s/bin/activate' % PROJECT_ID
 env.deploy_user = PROJECT_USER
 env.apache_bin_dir = "~/webapps/django_env/apache2/bin"
 env.log_location = "~/logs/user/error_django_env.log"
-env.git_repo = "git@bitbucket.org:dstegelman/derek-stegelman-com.git"
+env.git_repo = ""
 env.production_branch = "production"
 
 from hadrian.conf.fab import *

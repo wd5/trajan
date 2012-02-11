@@ -11,3 +11,4 @@ django-api-docs
 django-mail-queue
 django-location
 python-memcached
+sphinx
