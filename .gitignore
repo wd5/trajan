@@ -1,3 +1,5 @@
 *.pyc
 local.db
 dev.db
+trajan.egg-info
+dist/
