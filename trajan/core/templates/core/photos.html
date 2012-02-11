@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+
+<link href="{{ STATIC_URL }}facebox/facebox.css" rel='stylesheet' type='text/css'>
+<script src="{{ STATIC_URL }}facebox/facebox.js"></script>
+  
+
+<script>
+$(document).ready(function() {
+    $.facebox.settings.loading_image = '{{ STATIC_URL }}facebox/loading.gif';
+    $.facebox.settings.close_image = '{{ STATIC_URL }}facebox/closelabel.gif';
+    $('a[rel*=facebox]').facebox();
+});
+</script>
+{% endblock %}
+
+
+
+{% block main_content %}
+
+<section id="photos">
+    {% for photo in photos.objects %}
+    <a href="{{ photo.thumb_large }}" rel="facebox">
+        <img src="{{ photo.thumb }}" style='background: #000; padding:5px; margin-right:12px; margin-top:7px;'/>
+    </a>    
+    {% endfor %}
+    
+</section>
+
+
+
+<div class="pagination">
+    <span class="step-links">
+            {% if previous_page == "None" %}
+            {% else %}
+            <a href="?page={{ previous_page }}">previous</a>
+            {% endif %}
+            <a href="?page={{ next_page }}">next</a>
+        
+    </span>
+</div>
+{% endblock %}

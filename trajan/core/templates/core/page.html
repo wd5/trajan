@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<article class="entry about">
+    <h1>{{ content.title }}</h1>
+    <h2>Posted August 20th, 2011</h2>
+    <aside>
+			<img src="http://farm7.static.flickr.com/6080/6069436727_bf351bf650.jpg">
+				<h3>Stalk Me</h3>
+				<ul>
+				<li><a href="http://facebook.com/dstegelman">Facebook</a></li>
+				<li><a href="http://twitter.com/derekstegelman">Twitter</a></li>
+				<li><a href="http://github.com/dstegelman">Github</a></li>
+				</ul>
+				
+			</aside>
+{{ content.content }}
+</article>
+{% endblock %}

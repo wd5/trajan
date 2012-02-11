@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Derek.Stegelman.Com{% block extra_title %}{% endblock %}</title>
+		<link rel="stylesheet" href="{{ STATIC_URL }}stegelman/blog/css/styles.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		 <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+                <link href='http://fonts.googleapis.com/css?family=Abel|Rationale|Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+                {% block extra_head %}{% endblock %}
+                <script>
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-4439935-7']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</head>
+	<body{% block extra_body %}{% endblock %}>
+		<header>
+                    {% block main_nav %}
+                        {% load gravatar %}
+                        <img src="{% get_gravatar "dstegelman@gmail.com" 38 %}" class="gravatar">
+			
+                        <h1><a href="{% url blog.views.home %}">derek.stegelman.com</a></h1>
+			<nav>
+				<ul>
+                                        <li><a href="{% url blog.views.posts %}">Blog</a></li>
+                                        <li><a href="{% url traveler.views.trips %}">Trips</a></li>
+                                        <li><a href="{% url core.views.photos %}">Photos</a></li>
+                                        <li><a href="{% url brew.views.beers %}">Beers</a></li>
+                                        <li><a href="{% url core.views.locations %}">Locations</a></li>
+                                        <li><a href="{% url blog.views.twitter_feed %}">Statuses</a></li>
+					<li><a href="{% url about %}">About</a></li>
+					
+					<li><a href="{% url blogfeed %}"><img src="{{ STATIC_URL }}blog/img/rss.png" width="19px" class="rss"></a></li>
+				</ul>
+			</nav>
+                    {% endblock %}
+		</header>
+		<section id="main"{% block extra_section %}{% endblock %}>
+                    {% block main_content %}
+		<article class="entry">
+			<h1><a href="/">Blog Title</a></h1>
+			<h2>Posted August 20th, 2011 <a href="#">2 Comments</a></h2>
+			<p>
+			Today started rather well, but took a sad, sad turn.</p>
+			<p>
+			This morning we went to farmers market and picked up some meat and veg for dinner tonight which was fun, it was only later that morning that the day turned worse.</p>
+			</article>
+		<article class="entry">
+			<h1>Blog Title</h1>
+			<h2>Posted August 20th, 2011 <a href="#">2 Comments</a></h2>
+			<p>
+			Today started rather well, but took a sad, sad turn.</p>
+			
+		</article>
+		<article class="entry">
+			<h1>Blog Title</h1>
+			<h2>Posted August 20th, 2011 <a href="#">2 Comments</a></h2>
+			
+			</article>
+		<article class="entry">
+			<h1>Blog Title</h1>
+			<h2>Posted August 20th, 2011 <a href="#">2 Comments</a></h2>
+			<p>
+			Today started rather well, but took a sad, sad turn.</p>
+			</article>
+		{% endblock %}
+		</section>
+                <footer>
+		<span id="copywrite">&copy; 2009 - 2011 Derek Stegelman.  <a href="{% url api_docs.views.home %}">APIs Included</a></span>
+		</footer>
+	</body>
+</html>

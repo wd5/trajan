@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block extra_title %} | {{ beer.name }}{% endblock %}
+{% block main_content %}
+<article class="entry single_page">
+			<h1>{{ beer.name }}</h1>
+						
+			<aside>
+                            {% load thumbnail %}
+                            {% thumbnail beer.image "200x260" crop="center" as im %}
+			<img src="{{ im.url }}">
+                            {% endthumbnail %}
+				
+                                <h3>The Skinny</h3>
+				<dl>
+					<dt>Type</dt>
+					<dd>{{ beer.get_type_display }}</dd>
+					<dt>Style</dt>
+					<dd>{{ beer.get_style_display }}</dd>
+					<dt>OG</dt>
+                                        <dd>{{ beer.original_gravity }}</dd>
+                                        <dt>FG</dt>
+                                        <dd>{{ beer.final_gravity }}</dd>
+                                        <dt>ABV</dt>
+					<dd>{{ beer.abv }}</dd>
+					<dt>IBU</dt>
+					<dd>{{ beer.ibu }}</dd>
+					</dl>
+				
+			</aside>
+                        {% autoescape off %}
+                        {{ beer.description }}
+                        {% endautoescape %}
+			</article>
+
+{% endblock %}

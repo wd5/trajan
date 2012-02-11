@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block main_content %}
+<aside id="twitter_sidebar">
+                    {% load gravatar %}
+			<img src="{% get_gravatar "dstegelman@gmail.com" 80 %}">
+		</aside>
+		<h1>Statuses</h1>
+		{% for status in statuses %}
+                <article class="tweet">
+		<span class="date">{{ status.created_at }}</span>
+			<p><a href="http://twitter.com/derekstegelman/statuses/{{ status.twitter_id }}">{{ status.tweet }}</a></p>
+		</article>
+                {% endfor%}
+{% endblock %}

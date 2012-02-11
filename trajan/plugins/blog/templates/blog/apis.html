@@ -1,0 +1,169 @@
+{% extends "blog/base.html" %}
+{% block extra_head %}
+<script>
+		 $(document).ready(function() {
+		    $('.action').hide();
+		    
+		    $('.api_heading').click(function(){
+			$(this).parent().children('.action').slideToggle('slow');	  
+		    });
+		    $('.clear').click(function(){
+			$(this).parent().children('.response').empty();	  
+		    });
+		    $('#call_all_posts').click(function(){
+		       $.ajax({
+			  url: "http://api.stegelman.com/blog/posts/?posts=2",
+			  dataType: 'jsonp',
+			  success: function(data){
+				$('<h6>Response</h6><pre>' + JSON.stringify(data) + '</pre>').appendTo('#all_posts_response')  
+			  }
+		       });
+		    });
+                    $('#call_single_post').click(function(){
+		       $.ajax({
+			url: "http://api.stegelman.com/api/blog/post/2/",
+			dataType: 'jsonp',
+			success: function(data){
+			    $('<h6>Response</h6><pre>' + JSON.stringify(data) + '</pre>').appendTo("#single_post_response")	  
+			}
+		       });
+                    });
+                    $('#call_all_homebrews').click(function(){
+		       $.ajax({
+		           url: "http://api.stegelman.com/api/homebrew/",
+			   dataType: 'jsonp',
+			   success: function(data){
+				$('<h6>Response</h6><pre>' + JSON.stringify(data) + '</pre>').appendTo('#all_homebrews_response')  
+			   }
+		       });
+                    });
+                    $('#call_single_homebrew').click(function(){
+		    $.ajax({
+		       url: "http://api.stegelman.com/api/homebrew/1/",
+		       dataType: 'jsonp',
+		       success: function(data){
+			$('<h6>Response</h6><pre>' + JSON.stringify(data) + '</pre>').appendTo('#single_homebrew_response')	  
+		       }
+		    });
+
+                    });
+		    
+		 
+		  });
+		 </script>
+{% endblock %}
+{% block extra_section %} class="single_page"{% endblock %}
+{% block main_content %}
+<h1>Derek.Stegelman.Com.API</h1>
+			<aside>
+			<h2>General API Info</h2>
+			<dl>
+				<dt>Formats</dt>
+				<dd>JSON, XML</dd>
+				<dt>Interface</dt>
+				<dd>REST</dd>
+				<dt>Ordering</dt>
+				<dd>By ID</dd>
+				
+			</dl>
+			</aside>
+			<article class="api_info">
+				<h2>Philosophy is awesome</h2>
+                                <p>I've released several APIs of data from my personal site with
+                                much more to come.  I've got a pretty strong philosophy on API development that
+                                I hope to evangelize and discuss on this site.</p>
+                                <h3>Formats</h3>
+                                <p>APIs should return JSON by default with XML as an option, but should be
+                                discouraged from use as much as possible.  JSON is faster, and more lightweight than XML,
+                                and considering that many developers use javascript to consume APIs, what could be better
+                                than receiving an object back?</p>
+                                <h3>Interface</h3>
+                                <p>Long gone are the days of SOAP and other crappy implmenations of http based APIs.  Why
+                                all the fuss over schemas, methods, and properties, when you can just send an HTTP string with a given
+                                header and receive the data you exepect?  Seriously, REST is the only method you'll see me using.</p>
+			</article>
+			<h3 class="api_title">Blog API</h3>
+			<article class="api">
+			<p></p>
+			<h4 class="section_title">Posts</h4>
+			<section>
+                                <div id="all_posts" class="api_heading">
+				<h5 class="get" >GET</h5>
+				<h4>Get All Posts</h4>
+				<span>http://api.stegelman.com/blog/posts</span>
+                                </div>
+				<p>Retrieve a list the list of blog posts.  By default you will recieve all of the posts, however, it is advisable
+				to pass the GET paramter of posts=x where x is the number of posts you want.</p>
+				<div class="action" id="action_all_posts">
+					<a class="button positive" id="call_all_posts">Call this method</a><a class="button clear" id="clear_all_posts">Clear</a>
+					<h6>Call</h6>
+					<pre>http://api.stegelman.com/blog/posts</pre>
+					
+					<div id="all_posts_response" class="response">
+                                            
+					</div>
+				</div>
+			</section>
+			<section>
+                                <div id="single_post" class="api_heading">
+				<h5 class="get">GET</h5>
+				<h4>Get Single Post</h4>
+				<span>http://api.stegelman.com/blog/post/{post_id}</span>
+                                </div>
+				<p>Retrieve a single blog post.  This method has no extra parameters.</p>
+				<div class="action" id="action_single_post">
+                                    <a class="button positive" id="call_single_post">Call this method</a><a class="button clear" id="clear_single_post">Clear</a>
+					<h6>Call</h6>
+					<pre>http://api.stegelman.com/blog/post/2</pre>
+					
+					
+					<div id="single_post_response" class="response"></div>
+					  
+					 
+				
+				</div>
+			</section>
+			
+			
+			</article>
+			<h3 class="api_title">Homebrew API</h3>
+			<article class="api">
+                            <h4 class="section_title">Beers</h4>
+			<section>
+                                <div id="all_homebrews" class="api_heading">
+                                <h5 class="get">GET</h5>
+				<h4>Get ALL Homebrews</h4>
+				<span>http://api.stegelman.com/homebrew/</span>
+                                </div>
+                                <p>By default you will recieve all beers, however, it is recommended to pass the GET paramater,
+				beers=x where x is the number of objects you would like to receive.</p>
+                                <div class="action" id="action_all_homebrews">
+                                    <a class="button positive" id="call_all_homebrews">Call this method</a><a class="button clear" id="clear_all_homebrews">Clear</a>
+                                    <h6>Call</h6>
+					<pre>http://api.stegelman.com/homebrew/</pre>
+					
+					<div id="all_homebrews_response" class="response">
+					</div>
+                                    
+                                </div>
+			</section>
+			<section>
+                                <div id="single_homebrew" class="api_heading">
+                                <h5 class="get">GET</h5>
+				<h4>Get Single Beer</h4>
+				<span>http://api.stegelman.com/homebrew/{beer_id}</span>
+                                </div>
+                                <p>Retrieve a single beer by passing its ID through the URL.</p>
+                                <div class="action" id="action_single_homebrew">
+                                    <a class="button positive" id="call_single_homebrew">Call this method</a><a class="button clear" id="clear_single_homebrew">Clear</a>
+                                    <h6>Call</h6>
+					<pre>http://api.stegelman.com/homebrew/2/</pre>
+					
+					<div id="single_homebrew_response" class="response">
+					</div>
+                                    
+                                </div>
+                        </section>
+			
+			</article>
+            {% endblock %}
