@@ -23,7 +23,7 @@ setup(name='trajan',
       url='http://github.com/dstegelman/trajan',
       license='MIT',
       packages=find_packages(),
-      install_requires = [],
+      install_requires = ['django', 'south', 'sorl-thumbnail'],
       include_package_data=True,
       zip_safe=False,
     )
