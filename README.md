@@ -9,3 +9,10 @@ childless senator who proved to be unpopular with the army. After a brief and tu
 a revolt by members of the Praetorian Guard compelled him to adopt the more popular Trajan as his heir 
 and successor. Nerva died on 27 January 98, and was succeeded by his adopted son without incident.
 
+Install
+=======
+
+To install::
+
+    pip install trajan
+    
