@@ -23,9 +23,6 @@ class PostAdmin(admin.ModelAdmin):
             message_bit = "%s blog posts were" % rows
         self.message_user(request, "%s successfully published." % message_bit)
         
-
-            
-
         
 admin.site.register(Post, PostAdmin)
 

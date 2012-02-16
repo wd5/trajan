@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from hadrian.utils.slugs import unique_slugify
 
- # Needs to be TAGGIT
+from taggit.managers import TaggableManager
 from xml.etree import ElementTree
 # For use with model managers.
 from django.db.models.query import QuerySet
@@ -62,7 +62,7 @@ class Post(models.Model):
     published_date = models.DateField(auto_now=True, auto_now_add=True)
     location = models.ForeignKey(Location)
     image = models.ImageField(upload_to="blog", blank=True, null=True)
-    
+    tags = TaggableManager()
     
     published = models.BooleanField()
     objects = PostManager()
