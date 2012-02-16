@@ -1,9 +1,9 @@
 from django.conf.urls.defaults import patterns, include, url
 # Import your views and feeds from your app.
-from blog.views import *
-from blog.feeds import BlogFeed
+from trajan.plugins.blog.views import *
+from trajan.plugins.blog.feeds import BlogFeed
 from django.views.generic.simple import direct_to_template
-from blog.api import PostResource, StatusResource, CategoryResource
+from trajan.plugins.blog.api import PostResource, StatusResource, CategoryResource
 from tastypie.api import Api
 
 v1_api = Api(api_name='v1')

@@ -1,7 +1,7 @@
 from tastypie.resources import ModelResource
 from django.contrib.auth.models import User
 from tastypie import fields
-from blog.models import *
+from trajan.plugins.blog.models import *
 from core.api import LocationResource
 
 class CategoryResource(ModelResource):

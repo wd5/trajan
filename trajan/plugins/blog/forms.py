@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import Textarea
-from blog.models import *
+from trajan.plugins.blog.models import *
 
 class PostForm(forms.ModelForm):
     class Meta:
