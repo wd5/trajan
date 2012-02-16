@@ -1,9 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from hadrian.utils.slugs import unique_slugify
-# Import Tagging
-from hadrian.dist.tagging.fields import TagField
-from hadrian.dist.tagging.models import Tag
 
  # Needs to be TAGGIT
 from xml.etree import ElementTree
@@ -61,9 +58,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, editable=False)
     content = models.TextField(blank=True, null=True)
     summary = models.TextField(blank=True, editable=False, null=True)
-    tags = TagField()
     category = models.ForeignKey(Category, blank=True, null=True)
-    fotochest_api_call = models.CharField(max_length=350, blank=True, null=True, default='')
     published_date = models.DateField(auto_now=True, auto_now_add=True)
     location = models.ForeignKey(Location)
     image = models.ImageField(upload_to="blog", blank=True, null=True)

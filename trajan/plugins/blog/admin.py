@@ -6,7 +6,7 @@ from django import forms
 from django.conf import settings
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'tags', 'category', 'location', 'published')
+    list_display = ('title', 'category', 'location', 'published')
     save_on_top = True
     search_fields = ('title', 'category', 'location')
     actions = ['publish']
@@ -28,6 +28,5 @@ class PostAdmin(admin.ModelAdmin):
 
         
 admin.site.register(Post, PostAdmin)
-admin.site.register(Status)
 
 admin.site.register(Category)
