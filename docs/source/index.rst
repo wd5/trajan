@@ -14,6 +14,7 @@ Contents:
    quick_start
    templates/quick_start
    templates/tag_reference
+   plugins/blog/quick_start
    plugins/developing
 
 
