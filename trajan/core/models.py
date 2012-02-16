@@ -36,4 +36,4 @@ class Page(models.Model):
         
     @models.permalink
     def get_absolute_url(self):
-        return ('core.views.render_page', (), {'page_slug': self.slug})
+        return ('trajan.core.views.render_page', (), {'page_slug': self.slug})

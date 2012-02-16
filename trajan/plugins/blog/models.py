@@ -104,22 +104,7 @@ class Status(models.Model):
     class Meta:
         ordering = ['-twitter_id']
     
-def post_sync():
-    tree = ElementTree.parse("/home/dstegelman/webapps/cookbook_django/htdocs/apps/stegelman/blog/wordpress.xml")
-    category = Category(name="uncategorized")
-    category.save()
-    content_ns = '{http://purl.org/rss/1.0/modules/content/}'
-    for item in tree.findall("channel/item"):
-        post = Post(title=item.find("title").text)
-        #post.content = item.find("{http://purl.org/rss/1.0/modules/content/}encoded").text
-        post.content = item.find(content_ns + 'encoded').text
-        post.published = True
-        post.published_date = item.find("pubDate").text
-        user = User.objects.get(pk=1)
-        post.author = user
-        post.category = category
-        post.save()
-        
+
 def status_sync():
     from django.contrib.localflavor.us import us_states
     twitter_api = twitter.Api()
