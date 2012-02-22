@@ -34,6 +34,10 @@ class Page(models.Model):
         unique_slugify(self, self.title)
         super(Page, self).save(*args, **kwargs)
         
+    def preview(self):
+        return '<a href="%s?preview=true" target="_blank">Preview</a>' % self.get_absolute_url()
+    preview.allow_tags = True
+        
     @models.permalink
     def get_absolute_url(self):
         return ('trajan.core.views.render_page', (), {'page_slug': self.slug})

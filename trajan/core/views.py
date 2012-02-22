@@ -2,15 +2,15 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic.simple import direct_to_template
 # Import your models.
-from blog.models import *
-from core.models import *
+#from trajan.plugins.blog.models import *
+from trajan.core.models import *
 # Authentication stuff.  This is a handly decorator used to force a user to login.
 from django.contrib.auth.decorators import login_required
-from brew.models import Beer
-from locations.models import Location
+#from trajan.plugins.brew.models import Beer
+#from locations.models import Location
 from django.utils import simplejson
 import urllib
-
+'''
 def photos(request):
     page = request.GET.get('page', '1')
     if page == '1':
@@ -57,7 +57,7 @@ def location(request, location_id):
         context["statuses"] = status_paginator.page(status_paginator.num_pages)
     return render(request, 'blog/index.html', context)
     
-    
+'''    
 def render_page(request, page_slug):
     context = {}
     page = get_object_or_404(Page, slug=page_slug)
