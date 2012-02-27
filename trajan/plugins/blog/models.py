@@ -8,6 +8,7 @@ from xml.etree import ElementTree
 from django.db.models.query import QuerySet
 from django.template.defaultfilters import truncatewords_html
 from locations.models import Location
+from trajan.plugins.blog.managers import *
 
 import string
 from django.http import HttpResponse
@@ -16,23 +17,6 @@ from django.http import HttpResponse
     Define model managers here.
 
 '''
-
-class PostMixin(object):
-    def by_author(self, user):
-        return self.filter(user=user)
-
-    def published(self):
-        return self.filter(published=True)
-    
-    def by_category(self, category_slug):
-        return self.filter(category__slug=category_slug)
-
-class PostQuerySet(QuerySet, PostMixin):
-    pass
-
-class PostManager(models.Manager, PostMixin):
-    def get_query_set(self):
-        return PostQuerySet(self.model, using=self._db)
 
 
 class Category(models.Model):
