@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '0.2dev'
+version = '0.3dev'
 
 setup(name='trajan',
       version=version,
@@ -23,7 +23,7 @@ setup(name='trajan',
       url='http://github.com/dstegelman/trajan',
       license='MIT',
       packages=find_packages(),
-      install_requires = ['django', 'south', 'sorl-thumbnail'],
+      install_requires = ['django', 'south', 'sorl-thumbnail', 'django-tastypie'],
       include_package_data=True,
       zip_safe=False,
     )

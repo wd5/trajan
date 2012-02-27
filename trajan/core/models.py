@@ -27,6 +27,7 @@ class Page(models.Model):
     date_published = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
     
+    published = models.BooleanField(default=False)
     
     def __unicode__(self):
         return self.title 
