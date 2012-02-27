@@ -24,6 +24,7 @@ class Category(models.Model):
 class Page(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(editable=False)
+    date_published = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
     
     
