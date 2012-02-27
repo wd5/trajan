@@ -1,11 +1,12 @@
 from tastypie.resources import ModelResource
 from tastypie import fields
-from locations.models import *
+from trajan.core.models import *
 
 
-
-class LocationResource(ModelResource):
+class PageResource(ModelResource):
     class Meta:
-        queryset = Location.objects.all()
-        resource = 'location'
+        queryset = Page.objects.all()
+        resource = 'page'
         allowed_methods = ['get']
+
+
