@@ -1,5 +1,6 @@
 from django.db import models
 from hadrian.utils.slugs import unique_slugify
+from trajan.core.managers import PageManager
 
 class Category(models.Model):
     ''' Category Model '''
@@ -26,8 +27,10 @@ class Page(models.Model):
     slug = models.SlugField(editable=False)
     date_published = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
-    
     published = models.BooleanField(default=False)
+    
+    
+    objects = PageManager()
     
     def __unicode__(self):
         return self.title 
