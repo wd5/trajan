@@ -9,32 +9,10 @@ from django.db.models.query import QuerySet
 from django.template.defaultfilters import truncatewords_html
 from locations.models import Location
 from trajan.plugins.blog.managers import *
-
+from trajan.core.models import Category
 import string
 from django.http import HttpResponse
 
-'''
-    Define model managers here.
-
-'''
-
-
-class Category(models.Model):
-    name = models.CharField(max_length=250)
-    slug = models.SlugField(editable=False)
-    
-    def __unicode__(self):
-        return self.name
-    
-    @models.permalink
-    def get_absolute_url(self):
-        return ('blog.views.category', (), {'category_slug': self.slug})
-    
-    def save(self, *args, **kwargs):
-        unique_slugify(self, self.name)
-        super(Category, self).save(*args, **kwargs)
-
-# Create your models here.
 
 class Post(models.Model):
     title = models.CharField(max_length=250)

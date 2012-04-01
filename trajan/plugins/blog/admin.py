@@ -1,6 +1,6 @@
 from django.contrib import admin
 # Import your models here.
-from trajan.plugins.blog.models import *
+from trajan.plugins.blog.models import Post
 from locations.models import Location
 from django import forms
 from django.conf import settings
@@ -26,4 +26,3 @@ class PostAdmin(admin.ModelAdmin):
         
 admin.site.register(Post, PostAdmin)
 
-admin.site.register(Category)
