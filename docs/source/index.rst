@@ -15,7 +15,10 @@ Contents:
    templates/quick_start
    templates/tag_reference
    plugins/blog/quick_start
+   plugins/blog/template_tags
+   plugins/contact/quick_start
    plugins/developing
+   
 
 
 
