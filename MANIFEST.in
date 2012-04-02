@@ -3,3 +3,4 @@ recursive-include docs *
 recursive-include trajan/core/templates *
 recursive-include trajan/administration/static *
 recursive-include trajan/plugins/blog/templates *
+recursive-include trajan/plugins/contact/templates *

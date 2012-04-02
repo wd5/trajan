@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '0.4dev'
+version = '0.2dev'
 
 setup(name='trajan',
       version=version,
@@ -9,6 +9,7 @@ setup(name='trajan',
       classifiers=[
           "Development Status :: 3 - Alpha",
           "Environment :: Web Environment",
+          "Framework :: Django",
           "Intended Audience :: End Users/Desktop",
           "Natural Language :: English",
           "Operating System :: OS Independent",
@@ -17,7 +18,7 @@ setup(name='trajan',
           "Topic :: Utilities",
           "License :: OSI Approved :: MIT License",
           ],
-      keywords='',
+      keywords='CMS, Django, Blog',
       author='Derek Stegelman',
       author_email='dstegelman@gmail.com',
       url='http://github.com/dstegelman/trajan',
