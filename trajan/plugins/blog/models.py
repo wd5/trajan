@@ -34,7 +34,7 @@ class Post(models.Model):
     
     @models.permalink
     def get_absolute_url(self):
-        return ('blog.views.post', (), {'post_slug': self.slug, 'year': self.published_date.year, 'month': self.published_date.month, 'day': self.published_date.day})
+        return ('trajan.plugins.blog.views.post', (), {'post_slug': self.slug, 'year': self.published_date.year, 'month': self.published_date.month, 'day': self.published_date.day})
     
     def save(self, *args, **kwargs):
         unique_slugify(self, self.title)
