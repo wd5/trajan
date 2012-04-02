@@ -13,3 +13,9 @@ def get_blog_posts(posts=3):
 def tag_widget():
 	context = {'tags': Post.tags.all()}
 	return context
+	
+	
+@register.inclusion_tag('blog/templatetags/recent_posts.html')
+def recent_post_widget(posts=3):
+	context = {'posts': Post.objects.published()[:posts]}
+	return context
