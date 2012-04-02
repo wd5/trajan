@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '0.4dev'
+version = '0.2dev'
 
 setup(name='trajan',
       version=version,
