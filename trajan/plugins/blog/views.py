@@ -5,16 +5,15 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic.simple import direct_to_template
 # Import your models.
-from blog.models import *
+from trajan.plugins.blog.models import *
 # Import forms
-from blog.forms import PostForm, ContactForm
+from trajan.plugins.blog.forms import PostForm, ContactForm
 # Import tagging stuff if you are using the tagging module. Remove if not.
 from hadrian.dist.tagging.models import Tag, TaggedItem
 # Authentication stuff.  This is a handly decorator used to force a user to login.
 from django.contrib.auth.decorators import login_required
 from locations.models import Location
 from django.core.mail import send_mail
-import twitter
 
 
 '''
@@ -108,12 +107,3 @@ def category(request, category_slug):
         context = {'blog_posts': paginator.page(paginator.num_pages)}
     return render(request, 'blog/index.html', context)
 
-def twitter_feed(request):
-    #twitter_api = twitter.Api()
-    #context = {'statuses': twitter_api.GetUserTimeline("derekstegelman")}
-    context = {'statuses': Status.objects.all()[:20]}
-    return render(request, 'blog/status.html', context)
-    
-def twitter_sync(request):
-    status_sync()
-    return redirect("twitter_feed")

@@ -1,8 +1,8 @@
 from tastypie.resources import ModelResource
 from django.contrib.auth.models import User
 from tastypie import fields
-from blog.models import *
-from core.api import LocationResource
+from trajan.plugins.blog.models import *
+#from core.api import LocationResource
 
 class CategoryResource(ModelResource):
     class Meta:
@@ -13,7 +13,7 @@ class CategoryResource(ModelResource):
 
 class PostResource(ModelResource):
     category = fields.ForeignKey(CategoryResource, 'category')
-    location = fields.ForeignKey(LocationResource, 'location')
+    #location = fields.ForeignKey(LocationResource, 'location')
     
     class Meta:
         queryset = Post.objects.published()
@@ -22,10 +22,11 @@ class PostResource(ModelResource):
         include_absolute_url = True
         always_return_data = True
         
-
+'''
 class StatusResource(ModelResource):
     class Meta:
         queryset = Status.objects.all()
         resource = 'status'
         allowed_methods = ['get']
         include_absolute_url = True
+'''

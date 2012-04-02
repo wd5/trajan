@@ -1,5 +1,6 @@
 from django.db import models
 from hadrian.utils.slugs import unique_slugify
+from trajan.core.managers import PageManager
 
 class Category(models.Model):
     ''' Category Model '''
@@ -24,8 +25,12 @@ class Category(models.Model):
 class Page(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(editable=False)
+    date_published = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
+    published = models.BooleanField(default=False)
     
+    
+    objects = PageManager()
     
     def __unicode__(self):
         return self.title 
@@ -34,6 +39,10 @@ class Page(models.Model):
         unique_slugify(self, self.title)
         super(Page, self).save(*args, **kwargs)
         
+    def preview(self):
+        return '<a href="%s?preview=true" target="_blank">Preview</a>' % self.get_absolute_url()
+    preview.allow_tags = True
+        
     @models.permalink
     def get_absolute_url(self):
-        return ('core.views.render_page', (), {'page_slug': self.slug})
+        return ('trajan.core.views.render_page', (), {'page_slug': self.slug})

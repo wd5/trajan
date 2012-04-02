@@ -1,6 +1,6 @@
 from django.contrib.syndication.views import Feed
 # Import your models.
-from blog.models import *
+from trajan.plugins.blog.models import *
 
 class BlogFeed(Feed):
     title = "Derek.Stegelman.Com Blog Posts"

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block home_navigation %}
+<li><a href="{% url homepage %}">Home this is trajan</a></li>
+{% endblock %}
+{% block contact_navigation %}
+<li><a href="{% url trajan.plugins.contact.views.contact_form %}" style="border:none;" class="active">Contact</a></li>
+{% endblock %}
+{% block main_content %}
+<div id="left_column680">
+      <h1>Contact Us</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae lectus ante, a convallis elit. Integer non tellus purus, at semper lectus. Cras cursus dolor at metus vestibulum adipiscing. Integer eget quam lectus. </p>
+      <form id="contact_form" name="form1" method="post" action=".">{% csrf_token %}
+        {{ form.as_p }}
+        <div class="clear"></div>
+        <input type="submit" name="submitbutton" id="submitbutton" value="Send It!" />
+      </form>
+      </div>
+      
+
+    
+    {% endblock %}

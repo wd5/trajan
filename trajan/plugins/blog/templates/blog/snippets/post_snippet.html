@@ -1,0 +1,27 @@
+{% load comments %}
+
+<div class="blog">
+  <h2> <span><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></span> </h2>
+  <div class="blog_summary">
+    {% if post.image %}
+    <div class="blog_thumb">
+    {% load thumbnail %}
+    {% thumbnail post.image "146x146" crop="center" as im %}
+      <div class="thumb_thumb_decoration"></div>
+      <img src="{{ im.url }}" alt="thumb" /> </div>
+      {% endthumbnail %}
+  {% endif %}
+    <div class="blog_text">
+      <div class="date_flag"> <span class="day">{{ post.published_date.day }}th</span> <span class="month">{{ post.published_date|date:"N" }}</span> <span class="year">{{ post.published_date.year }}</span> </div>
+      <p>{% autoescape off %} {{ post.content|truncatewords_html:70|removetags:"img" }} {% endautoescape %}</p>
+    </div>
+  </div>
+  <div class="blog_footer">
+    <ul>
+    {% get_comment_count for post as comment_count %}
+      <li><a href="{{ post.get_absolute_url }}#blog_comments">{{ comment_count }} Comments</a></li>
+      <li><a href="#">By {{ post.author.first_name }}</a></li>
+      <li>Tags: {% for tag in post.tags.all %}<a href="{% url blog.views.tag tag_slug=tag.slug %}">{{ tag }}</a>, {% endfor %}</li>
+    </ul>
+    <a href="{{ post.get_absolute_url }}" class="button_small">More</a></div>
+</div>
