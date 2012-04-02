@@ -12,4 +12,4 @@ def render_page(request, page_slug):
     
     return render(request, 'core/page.html', context)
     
-    
+ 
