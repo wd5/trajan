@@ -26,7 +26,7 @@ urlpatterns = patterns('',
     
     #url(r'^sync/', sync),
     url(r'^about/', direct_to_template, {'template': 'blog/about.html'}, name="about"),
-    #url(r'^tag/(?P<tag_slug>[-\w]+)/$', tag, name="tag"),
+    url(r'^tag/(?P<tag_slug>[-\w]+)/$', tag, name="tag"),
     #url(r'^apis/$', 'api_docs.views.home', name="api_listing"),
     #url(r'^apis/', include('api_docs.urls')),
     url(r'^api/', include(v1_api.urls)),

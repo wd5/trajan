@@ -1,45 +1,25 @@
 {% extends "base.html" %}
-
+{% load comments %}
+{% block home_navigation %}
+<li><a href="{% url core.views.home %}">Home</a></li>
+{% endblock %}
+{% block blog_navigation %}
+<li><a href="{% url blog.views.posts %}" class="active">Blog</a></li>
+{% endblock %}
 {% block main_content %}
-    {% if blog_posts.object_list %}
-    
-    {% for post in blog_posts.object_list %}
-        <article class="entry">
-	    <h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
-	    <h2>Posted {{ post.published_date }} in <a href="{{ post.category.get_absolute_url }}">{{ post.category.name }}</a></h2>
-            {% autoescape off %}
-	{{ post.content }}
-        {% endautoescape %}
-        </article>
-        
-    {% endfor %}
-    {% endif %}
-    
-    {% if statuses.object_list %}
-    <h1>Statuses</h1>
-    {% for status in statuses.object_list %}
-        <article class="tweet">
-		<span class="date">{{ status.created_at }}</span>
-			<p><a href="http://twitter.com/derekstegelman/statuses/{{ status.twitter_id }}">{{ status.tweet }}</a></p>
-		</article>
-        
-    {% endfor %}
-    {% endif %}
 
-<div class="pagination">
-    <span class="step-links">
-        {% if blog_posts.has_previous %}
-            <a href="?page={{ blog_posts.previous_page_number }}">previous</a>
-        {% endif %}
-
-        <span class="current">
-            Page {{ blog_posts.number }} of {{ blog_posts.paginator.num_pages }}.
-        </span>
-
-        {% if blog_posts.has_next %}
-            <a href="?page={{ blog_posts.next_page_number }}">next</a>
-        {% endif %}
-    </span>
+<div id="left_column680">
+  <h1>Blog</h1>
+  <!--start blog-->
+  {% for post in blog_posts.object_list %}
+  {% include "blog/snippets/post_snippet.html" %}
+  {% endfor %}
+  <!--end blog-->
+  {% include "blog/snippets/pagination_snippet.html" %}
+  
 </div>
+<!--end left_column680-->
+
+
 {% endblock %}
 

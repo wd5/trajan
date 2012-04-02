@@ -1,0 +1,8 @@
+<nav class="navigation" id="nav-below">
+	{% if blog_posts.has_previous %}
+	<div class="nav-previous"><a href="?page={{ blog_posts.previous_page_number }}">← Previous</a></div>
+	{% endif %}
+	{% if blog_posts.has_next %}
+	<div class="nav-next"><a href="?page={{ blog_posts.next_page_number }}">Next →</a></div>
+	{% endif %}
+</nav>

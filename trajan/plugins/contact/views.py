@@ -16,4 +16,4 @@ def contact_form(request):
     else:
         form = ContactForm()
     context['form'] = form
-    return render(request, 'core/contact.html', context)
+    return render(request, 'contact/contact.html', context)
